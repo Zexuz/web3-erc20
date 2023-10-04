@@ -7,11 +7,15 @@ export default {
       padding: "6rem",
     },
     colors: {
-      primary: {
-        500: "#2C50ED",
-      },
-      secondary: {
-        500: "#FF3366",
+      primary: "#2C50ED",
+      secondary: "#FF3366",
+      blue: {
+        100: "#6C85F2",
+        200: "#2942B4",
+        300: "#2B2E4C",
+        400: "#242D5B",
+        500: "#222437",
+        600: "#1C1E2F",
       },
       white: "#FFFFFF",
       gray: {

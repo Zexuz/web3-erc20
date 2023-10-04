@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should render 1`] = `
+<button
+  className="bg-primary rounded-md px-4 py-2 text-white"
+  onClick={[Function]}
+>
+  <span
+    className="font-poppins text-sm font-medium"
+  >
+    Test
+  </span>
+</button>
+`;
