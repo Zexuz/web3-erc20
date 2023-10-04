@@ -3,5 +3,5 @@ interface ParagraphProps {
 }
 
 export const Paragraph = ({ text }: ParagraphProps) => {
-  return <span className={"font-poppins text-sm font-medium"}>{text}</span>;
+  return <p className={"font-poppins text-sm font-medium"}>{text}</p>;
 };
