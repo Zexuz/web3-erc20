@@ -13,6 +13,7 @@ export const Input = ({
   label,
   placeholder,
   initialValue,
+  disabled,
 }: InputProps) => {
   const [value, setValue] = React.useState(initialValue);
 
@@ -30,6 +31,7 @@ export const Input = ({
         value={value}
         placeholder={placeholder}
         onChange={onChangeHandler}
+        disabled={disabled}
       />
     </div>
   );
