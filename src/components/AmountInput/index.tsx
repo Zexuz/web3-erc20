@@ -24,6 +24,9 @@ export const AmountInput = () => {
         label={"Amount"}
         initialValue={amount === 0 ? "" : amount}
         placeholder={"777.7777777"}
+        disabled={false}
+        isValueValid={false}
+        errorMessage={"Invalid amount"}
       />
       <Balance />
     </div>
