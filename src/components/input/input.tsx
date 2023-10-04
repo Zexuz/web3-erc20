@@ -7,8 +7,13 @@ interface InputProps {
 export const Input = ({ onChange, label, placeholder }: InputProps) => {
   return (
     <>
-      <label>{label}</label>
-      <input type="text" placeholder={placeholder} onChange={onChange} />
+      <label className={"font-poppins text-sm font-medium"}>{label}</label>
+      <input
+        className={"text-blue-600"}
+        type="text"
+        placeholder={placeholder}
+        onChange={onChange}
+      />
     </>
   );
 };
