@@ -6,14 +6,16 @@ import { useTransferStore } from "../../store/transfer.ts";
 export const AmountInput = () => {
   const amount = useTransferStore((state) => state.amount);
   const setAmount = useTransferStore((state) => state.setAmount);
+  const [isValueValid, setIsValueValid] = React.useState(true);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // TODO: Validate input
     const number = Number(e.target.value);
     if (isNaN(number)) {
+      setIsValueValid(false);
       return;
     }
 
+    setIsValueValid(true);
     setAmount(number);
   };
 
@@ -25,8 +27,8 @@ export const AmountInput = () => {
         initialValue={amount === 0 ? "" : amount}
         placeholder={"777.7777777"}
         disabled={false}
-        isValueValid={false}
-        errorMessage={"Invalid amount"}
+        isValueValid={isValueValid}
+        errorMessage={"Not a valid number"}
       />
       <Balance />
     </div>
