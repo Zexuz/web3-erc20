@@ -3,14 +3,32 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { BalanceContainer } from "./BalanceContainer";
 import * as erc20Service from "../../services/web3/erc20";
 import { act } from "react-dom/test-utils";
+import { useUserStore } from "../../store/user.ts";
+import { useTransferStore } from "../../store/transfer.ts";
 
 jest.mock("../../services/web3/erc20");
 
 const mockErc20Service = erc20Service as jest.Mocked<typeof erc20Service>;
 
+jest.mock("../../store/user.ts", () => ({
+  useUserStore: jest.fn(),
+}));
+
+jest.mock("../../store/transfer.ts", () => ({
+  useTransferStore: jest.fn(),
+}));
+
 describe("BalanceContainer component", () => {
   beforeEach(() => {
     jest.clearAllMocks();
+
+    (useUserStore as unknown as jest.Mock).mockImplementation(
+      () => "0xddc2f17daCb8187AC0e26e6Bd852Ee3212684b8A",
+    );
+
+    (useTransferStore as unknown as jest.Mock).mockImplementation(
+      () => "0xddc2f17daCb8187AC0e26e6Bd852Ee3212684b8B",
+    );
   });
 
   it("fetches balance, symbol, and decimals on mount", async () => {
@@ -19,22 +37,19 @@ describe("BalanceContainer component", () => {
     mockErc20Service.getDecimals.mockResolvedValue(18);
 
     act(() => {
-      render(
-        <BalanceContainer
-          contractAddress="some_contract"
-          userAddress="some_user"
-        />,
-      );
+      render(<BalanceContainer />);
     });
 
     await waitFor(() => {
       expect(mockErc20Service.getBalance).toHaveBeenCalledWith(
-        "some_contract",
-        "some_user",
+        "0xddc2f17daCb8187AC0e26e6Bd852Ee3212684b8B",
+        "0xddc2f17daCb8187AC0e26e6Bd852Ee3212684b8A",
       );
-      expect(mockErc20Service.getSymbol).toHaveBeenCalledWith("some_contract");
+      expect(mockErc20Service.getSymbol).toHaveBeenCalledWith(
+        "0xddc2f17daCb8187AC0e26e6Bd852Ee3212684b8B",
+      );
       expect(mockErc20Service.getDecimals).toHaveBeenCalledWith(
-        "some_contract",
+        "0xddc2f17daCb8187AC0e26e6Bd852Ee3212684b8B",
       );
     });
   });
@@ -45,12 +60,7 @@ describe("BalanceContainer component", () => {
     mockErc20Service.getDecimals.mockResolvedValue(18);
 
     act(() => {
-      render(
-        <BalanceContainer
-          contractAddress="0xddc2f17daCb8187AC0e26e6Bd852Ee3212684b81"
-          userAddress="0xddc2f17daCb8187AC0e26e6Bd852Ee3212684b81"
-        />,
-      );
+      render(<BalanceContainer />);
     });
 
     await waitFor(() => {

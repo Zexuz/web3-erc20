@@ -5,16 +5,13 @@ import {
 } from "../../services/web3/erc20.ts";
 import { useCallback, useEffect, useState } from "react";
 import { BalanceView, ERC20Info } from "./BalanceView.tsx";
+import { useTransferStore } from "../../store/transfer.ts";
+import { useUserStore } from "../../store/user.ts";
 
-export interface BalanceTypes {
-  contractAddress: string;
-  userAddress: string;
-}
+export const BalanceContainer = () => {
+  const contractAddress = useTransferStore((state) => state.contractAddress);
+  const userAddress = useUserStore((state) => state.address);
 
-export const BalanceContainer = ({
-  contractAddress,
-  userAddress,
-}: BalanceTypes) => {
   const [info, setInfo] = useState<ERC20Info | null>(null);
 
   const fetchBalance = useCallback(async () => {

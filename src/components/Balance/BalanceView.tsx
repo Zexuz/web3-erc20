@@ -18,16 +18,16 @@ export const BalanceView = ({
   contractAddress,
   userAddress,
 }: BalanceViewProps) => {
+  if (!userAddress) {
+    return <Paragraph text="Sign in to check balance" />;
+  }
+
   if (!info) {
     return <Paragraph text="Loading..." />;
   }
 
   if (contractAddress.length !== 42) {
     return <Paragraph text="Invalid contract address" />;
-  }
-
-  if (!userAddress) {
-    return <Paragraph text="Invalid user address" />;
   }
 
   const formattedBalance = ethers.formatUnits(info.balance, info.decimals);
