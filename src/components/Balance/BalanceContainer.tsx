@@ -1,24 +1,20 @@
-import { Paragraph } from "../paragraph";
 import {
   getBalance,
   getDecimals,
   getSymbol,
 } from "../../services/web3/erc20.ts";
 import { useCallback, useEffect, useState } from "react";
-import { ethers } from "ethers";
+import { BalanceView, ERC20Info } from "./BalanceView.tsx";
 
-interface BalanceProps {
+export interface BalanceTypes {
   contractAddress: string;
   userAddress: string;
 }
 
-interface ERC20Info {
-  balance: number;
-  symbol: string;
-  decimals: number;
-}
-
-export const Balance = ({ contractAddress, userAddress }: BalanceProps) => {
+export const BalanceContainer = ({
+  contractAddress,
+  userAddress,
+}: BalanceTypes) => {
   const [info, setInfo] = useState<ERC20Info | null>(null);
 
   const fetchBalance = useCallback(async () => {
@@ -37,10 +33,11 @@ export const Balance = ({ contractAddress, userAddress }: BalanceProps) => {
     fetchBalance();
   }, [contractAddress, fetchBalance, userAddress]);
 
-  if (!info) {
-    return <Paragraph text={"Loading..."} />;
-  }
-
-  const formattedBalance = ethers.formatUnits(info.balance, info.decimals);
-  return <Paragraph text={`You have ${formattedBalance} ${info.symbol}`} />;
+  return (
+    <BalanceView
+      info={info}
+      contractAddress={contractAddress}
+      userAddress={userAddress}
+    />
+  );
 };
