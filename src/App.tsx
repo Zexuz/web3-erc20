@@ -1,16 +1,30 @@
-import { Input } from "./components/input";
-import { Button } from "./components/button";
-import { Paragraph } from "./components/paragraph";
+import { Input } from "./components/Input";
+import { Button } from "./components/Button";
+import { Paragraph } from "./components/Paragraph";
+import { Balance } from "./components/Balance";
+
+const CCIP_TOKEN_ADDRESS = "0xFd57b4ddBf88a4e07fF4e34C487b99af2Fe82a05";
 
 function App() {
+  const userAddress = "0xddc2f17daCb8187AC0e26e6Bd852Ee3212684b81";
+  const onContractAddressChange = async (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {};
+
   return (
     <Layout>
-      <div className="flex flex-col items-center justify-center py-2">
-        <Input
-          onChange={(e) => console.log(e.target.value)}
-          label={"Contract address"}
-          placeholder={"0xAbCeD"}
-        />
+      <div className="flex flex-col items-center justify-center space-y-8 py-2">
+        <div>
+          <Input
+            onChange={onContractAddressChange}
+            label={"Contract address"}
+            placeholder={"0xAbCeD"}
+          />
+          <Balance
+            contractAddress={CCIP_TOKEN_ADDRESS}
+            userAddress={userAddress}
+          />
+        </div>
         <Input
           onChange={(e) => console.log(e.target.value)}
           label={"Receiver address"}
