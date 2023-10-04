@@ -1,14 +1,12 @@
-describe("", () => {
-  it("", () => {
-    expect(true).toBe(true);
+import renderer from "react-test-renderer";
+import { Input } from "./input.tsx";
+
+describe("Input", () => {
+  it("should render", () => {
+    const tree = renderer
+      .create(<Input placeholder="test" label="test" onChange={() => {}} />)
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
   });
 });
-
-export const Input = () => {
-  return (
-    <>
-      <label>Contract Address</label>
-      <input type="text" placeholder={"0xabcde"} />
-    </>
-  );
-};

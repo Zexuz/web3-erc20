@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input should render 1`] = `
+[
+  <label>
+    test
+  </label>,
+  <input
+    onChange={[Function]}
+    placeholder="test"
+    type="text"
+  />,
+]
+`;
