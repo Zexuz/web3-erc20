@@ -1,4 +1,4 @@
-import { Paragraph } from "../paragraph";
+import { Paragraph } from "../Paragraph";
 
 interface ButtonProps {
   text: string;
@@ -8,7 +8,7 @@ interface ButtonProps {
 export const Button = ({ text, onClick }: ButtonProps) => {
   return (
     <button
-      className={`bg-primary rounded-md px-4 py-2 text-white`}
+      className={`rounded-md bg-primary px-4 py-2 text-white`}
       onClick={onClick}
     >
       <Paragraph text={text} />

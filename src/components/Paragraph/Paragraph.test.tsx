@@ -1,5 +1,5 @@
 import renderer from "react-test-renderer";
-import { Paragraph } from "./paragraph.tsx";
+import { Paragraph } from "./Paragraph.tsx";
 
 describe("Paragraph", () => {
   it("should render the text", () => {

@@ -1,5 +1,5 @@
 import renderer from "react-test-renderer";
-import { Input } from "./input.tsx";
+import { Input } from "./Input.tsx";
 
 describe("Input", () => {
   it("should render", () => {

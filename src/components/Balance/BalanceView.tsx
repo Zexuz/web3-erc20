@@ -1,4 +1,4 @@
-import { Paragraph } from "../paragraph";
+import { Paragraph } from "../Paragraph";
 import { ethers } from "ethers";
 
 interface BalanceViewProps {
