@@ -19,7 +19,7 @@ export const BalanceView = ({
   userAddress,
 }: BalanceViewProps) => {
   if (!userAddress) {
-    return <Paragraph text="Sign in to check balance" />;
+    return <Paragraph text="Connect Wallet to check balance" />;
   }
 
   if (!info) {
