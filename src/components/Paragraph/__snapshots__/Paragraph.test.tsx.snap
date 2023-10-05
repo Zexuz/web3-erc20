@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Paragraph should render the text 1`] = `
+<p
+  className="font-poppins text-sm font-medium"
+>
+  test
+</p>
+`;

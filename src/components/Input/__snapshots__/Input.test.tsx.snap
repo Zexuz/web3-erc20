@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input should render 1`] = `
+<div
+  className="flex w-full flex-col space-y-2"
+>
+  <label
+    className="font-poppins text-sm font-medium "
+  >
+    test
+  </label>
+  <input
+    className="rounded-lg border bg-blue-300 p-2.5 text-sm text-gray-200 hover:ring-2 hover:ring-blue-200 focus:border-primary focus:outline-none focus:ring-2 focus:ring-blue-400  "
+    onChange={[Function]}
+    placeholder="test"
+    type="text"
+  />
+</div>
+`;
