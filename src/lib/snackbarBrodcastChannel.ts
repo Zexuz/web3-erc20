@@ -26,7 +26,6 @@ export class SnackBarBroadcastChannel {
 
   onMessage(callback: OnMessageCallback) {
     this.channel.onmessage = (event: MessageEvent) => {
-      console.log("Received message", event.data);
       if (!(event.data && event.data.messages)) {
         return;
       }

@@ -16,6 +16,8 @@ export const BalanceContainer = () => {
   const [info, setInfo] = useState<ERC20Info | null>(null);
 
   const fetchBalance = useCallback(async () => {
+    if (!contractAddress || !userAddress) return;
+
     const balance = await getBalance(contractAddress, userAddress);
     const symbol = await getSymbol(contractAddress);
     const decimals = await getDecimals(contractAddress);
@@ -30,8 +32,6 @@ export const BalanceContainer = () => {
   useEffect(() => {
     fetchBalance();
   }, [contractAddress, fetchBalance, userAddress, nrOfTransfers]);
-
-  console.log(nrOfTransfers);
 
   return (
     <BalanceView

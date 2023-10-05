@@ -37,12 +37,11 @@ export const TransferButton = () => {
   };
 
   const text = address ? "Transfer" : "Connect Wallet";
-  console.log("isValid", isValid);
   return (
     <div className="flex min-w-full justify-center">
       <Button
         text={text}
-        disabled={!isValid}
+        disabled={!address ? false : !isValid}
         isLoading={isSending}
         onClick={onTransfer}
       />
