@@ -30,7 +30,7 @@ export const validateEthereumAddress = (address: string): ValidationResult => {
 export const validateAmount = (amount: string): ValidationResult => {
   const number = Number(amount);
   if (isNaN(number)) {
-    return { isValid: false, reason: "Amount is not a number." };
+    return { isValid: false, reason: "Amount is not .eslintrc.js number." };
   }
 
   if (number <= 0) {

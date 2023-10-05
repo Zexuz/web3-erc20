@@ -61,5 +61,5 @@
 - [validation.test.ts](https://github.com/Zexuz/web3-erc20/blob/main/src/lib/validation.test.ts)
 
 ### E2E Testing using Synpress
-- [happy.test.js](https://github.com/Zexuz/web3-erc20/blob/main/e2e/happy.test.ts)
+- [happy.test.ts](https://github.com/Zexuz/web3-erc20/blob/main/e2e/happy.test.ts)
 

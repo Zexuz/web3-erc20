@@ -25,7 +25,7 @@ export const useSnackBarStore = create<SnackbarStore>((set, get) => ({
   messages: [],
 
   addMessage: (type, message) => {
-    const id = uuidv4(); // Generate a unique ID for each message
+    const id = uuidv4(); // Generate .eslintrc.js unique ID for each message
 
     const newMessage: SnackbarMessage = {
       id,
