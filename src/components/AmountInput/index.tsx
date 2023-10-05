@@ -2,33 +2,30 @@ import { Input } from "../Input";
 import { Balance } from "../Balance";
 import React from "react";
 import { useTransferStore } from "../../store/transfer.ts";
+import { validateAmount } from "../../lib/validation.ts";
+import { useValidatedInput } from "../../hooks/validation.tsx";
 
 export const AmountInput = () => {
   const amount = useTransferStore((state) => state.amount);
   const setAmount = useTransferStore((state) => state.setAmount);
-  const [isValueValid, setIsValueValid] = React.useState(true);
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const number = Number(e.target.value);
-    if (isNaN(number)) {
-      setIsValueValid(false);
-      return;
-    }
-
-    setIsValueValid(true);
-    setAmount(number);
-  };
+  const { isValueValid, errorMessage, onChange, initialValue } =
+    useValidatedInput({
+      initialValue: amount === 0 ? "" : amount,
+      validate: validateAmount,
+      setValue: (value: string) => setAmount(Number(value)),
+    });
 
   return (
     <div className="w-full">
       <Input
         onChange={onChange}
         label={"Amount"}
-        initialValue={amount === 0 ? "" : amount}
+        initialValue={initialValue}
         placeholder={"777.7777777"}
         disabled={false}
         isValueValid={isValueValid}
-        errorMessage={"Not a valid number"}
+        errorMessage={errorMessage}
       />
       <Balance />
     </div>

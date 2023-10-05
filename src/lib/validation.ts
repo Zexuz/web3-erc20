@@ -1,6 +1,6 @@
 type ValidationResult = {
   isValid: boolean;
-  reason: string | undefined;
+  reason: string;
 };
 
 export const validateEthereumAddress = (address: string): ValidationResult => {
@@ -24,5 +24,18 @@ export const validateEthereumAddress = (address: string): ValidationResult => {
     };
   }
 
-  return { isValid: true, reason: undefined };
+  return { isValid: true, reason: "" };
+};
+
+export const validateAmount = (amount: string): ValidationResult => {
+  const number = Number(amount);
+  if (isNaN(number)) {
+    return { isValid: false, reason: "Amount is not a number." };
+  }
+
+  if (number <= 0) {
+    return { isValid: false, reason: "Amount should be greater than 0." };
+  }
+
+  return { isValid: true, reason: "" };
 };
