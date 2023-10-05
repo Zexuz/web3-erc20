@@ -26,7 +26,6 @@ export const useValidatedInput = ({
     if (!validationResponse.isValid) {
       setIsValueValid(false);
       setErrorMessage(validationResponse.reason);
-      return;
     } else {
       setIsValueValid(true);
       setErrorMessage("");

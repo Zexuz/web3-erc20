@@ -1,7 +1,7 @@
 import { Input } from "../Input";
 import { useTransferStore } from "../../store/transfer.ts";
 import { validateEthereumAddress } from "../../lib/validation.ts";
-import { useValidatedInput } from "../../hooks/validation.tsx";
+import { useValidatedInput } from "../../hooks/useValidatedInput";
 
 export const ReceiverInput = () => {
   const receiverAddress = useTransferStore((state) => state.receiverAddress);

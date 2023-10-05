@@ -3,7 +3,7 @@ import { Balance } from "../Balance";
 import React from "react";
 import { useTransferStore } from "../../store/transfer.ts";
 import { validateAmount } from "../../lib/validation.ts";
-import { useValidatedInput } from "../../hooks/validation.tsx";
+import { useValidatedInput } from "../../hooks/useValidatedInput";
 
 export const AmountInput = () => {
   const amount = useTransferStore((state) => state.amount);

@@ -1,5 +1,5 @@
 import { renderHook, act } from "@testing-library/react-hooks";
-import { useValidatedInput, ValidationResult } from "./validation.tsx"; // Replace with your actual file location
+import { useValidatedInput, ValidationResult } from "./useValidatedInput.tsx"; // Replace with your actual file location
 
 const mockSetState = jest.fn();
 jest.mock("react", () => ({
