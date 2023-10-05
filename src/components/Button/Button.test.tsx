@@ -9,4 +9,12 @@ describe("Button", () => {
 
     expect(tree).toMatchSnapshot();
   });
+
+  it("should render with loading icon", () => {
+    const tree = renderer
+      .create(<Button text={"Action"} isLoading={true} onClick={() => {}} />)
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
 });

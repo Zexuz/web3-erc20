@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should render 1`] = `
+<button
+  className="relative flex w-full items-center justify-center rounded-md bg-primary px-4 py-2 text-white"
+  onClick={[Function]}
+>
+  <p
+    className="font-poppins text-sm font-medium"
+  >
+    Test
+  </p>
+</button>
+`;
+
+exports[`Button should render with loading icon 1`] = `
+<button
+  className="relative flex w-full items-center justify-center rounded-md bg-primary px-4 py-2 text-white"
+  onClick={[Function]}
+>
+  <p
+    className="font-poppins text-sm font-medium"
+  >
+    Action
+  </p>
+  <div
+    className="loader absolute right-4"
+  />
+</button>
+`;

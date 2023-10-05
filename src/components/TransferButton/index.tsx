@@ -3,7 +3,6 @@ import { useUserStore } from "../../store/user.ts";
 import { Button } from "../Button";
 import { useSnackBarStore } from "../../store/snackbar.ts";
 import { useState } from "react";
-import { getProvider, transfer } from "../../services/web3/erc20.ts";
 import { useTransferStore } from "../../store/transfer.ts";
 
 export const TransferButton = () => {
@@ -11,7 +10,8 @@ export const TransferButton = () => {
   const address = useUserStore((state) => state.address);
   const addMessage = useSnackBarStore((state) => state.addMessage);
 
-  const transferStore = useTransferStore((state) => state);
+  const transfer = useTransferStore((state) => state.transfer);
+  const isValid = useTransferStore((state) => state.isValid);
 
   const [isSending, setIsSending] = useState(false);
 
@@ -26,13 +26,7 @@ export const TransferButton = () => {
 
     try {
       setIsSending(true);
-      const tx = await transfer(
-        transferStore.contractAddress,
-        transferStore.receiverAddress,
-        transferStore.amount,
-      );
-      addMessage("info", "Sending transaction...");
-      await tx.wait();
+      await transfer(() => addMessage("info", "Sending transaction..."));
       addMessage("success", "Transaction confirmed");
     } catch (e) {
       addMessage("error", "Failed to send transaction");
@@ -43,10 +37,15 @@ export const TransferButton = () => {
   };
 
   const text = address ? "Transfer" : "Connect Wallet";
-
+  console.log("isValid", isValid);
   return (
     <div className="flex min-w-full justify-center">
-      <Button text={text} isLoading={isSending} onClick={onTransfer} />
+      <Button
+        text={text}
+        disabled={!isValid}
+        isLoading={isSending}
+        onClick={onTransfer}
+      />
     </div>
   );
 };
