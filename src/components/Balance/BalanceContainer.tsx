@@ -33,11 +33,5 @@ export const BalanceContainer = () => {
     fetchBalance();
   }, [contractAddress, fetchBalance, userAddress, nrOfTransfers]);
 
-  return (
-    <BalanceView
-      info={info}
-      contractAddress={contractAddress}
-      userAddress={userAddress}
-    />
-  );
+  return <BalanceView info={info} userAddress={userAddress} />;
 };

@@ -13,7 +13,7 @@ describe("Validation", () => {
         false,
         "Address should contain only hexadecimal characters.",
       ],
-      ["0x742d35Cc6634C0532925a3b844Bc454e4438f44e", true, undefined],
+      ["0x742d35Cc6634C0532925a3b844Bc454e4438f44e", true, ""],
     ])(
       "when input is %s, it should return {isValid: %p, reason: %p}",
       (input, expectedIsValid, expectedReason) => {

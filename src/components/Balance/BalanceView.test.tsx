@@ -13,38 +13,16 @@ describe("BalanceView component", () => {
   });
 
   it("displays loading state when info is null", () => {
-    render(
-      <BalanceView
-        info={null}
-        contractAddress="some_contract"
-        userAddress="some_user"
-      />,
-    );
+    render(<BalanceView info={null} userAddress="some_user" />);
     expect(screen.getByText("Loading...")).toBeInTheDocument();
   });
 
-  it("displays 'Invalid contract address' when contract address is not 42 characters long", () => {
+  it("displays 'Connect Wallet to check balance' when user address is empty", () => {
     const info: ERC20Info = { balance: 100, symbol: "ETH", decimals: 18 };
-    render(
-      <BalanceView
-        info={info}
-        contractAddress="short_address"
-        userAddress="some_user"
-      />,
-    );
-    expect(screen.getByText("Invalid contract address")).toBeInTheDocument();
-  });
-
-  it("displays 'Invalid user address' when user address is empty", () => {
-    const info: ERC20Info = { balance: 100, symbol: "ETH", decimals: 18 };
-    render(
-      <BalanceView
-        info={info}
-        contractAddress="0x1234567890123456789012345678901234567890"
-        userAddress=""
-      />,
-    );
-    expect(screen.getByText("Invalid user address")).toBeInTheDocument();
+    render(<BalanceView info={info} userAddress="" />);
+    expect(
+      screen.getByText("Connect Wallet to check balance"),
+    ).toBeInTheDocument();
   });
 
   it("displays the Balance information correctly", () => {
@@ -54,7 +32,6 @@ describe("BalanceView component", () => {
     render(
       <BalanceView
         info={info}
-        contractAddress="0x1234567890123456789012345678901234567890"
         userAddress="0x1234567890123456789012345678901234567890"
       />,
     );
