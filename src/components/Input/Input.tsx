@@ -37,7 +37,7 @@ export const Input = ({
     : "";
 
   const baseClasses =
-    "rounded-lg border p-2.5 text-blue-600 focus:border-blue-400 focus:outline-none text-sm";
+    "rounded-lg border p-2.5 text-gray-200 focus:border-primary focus:outline-none text-sm bg-blue-300 focus:ring-2 focus:ring-blue-400";
 
   return (
     <div className={"flex w-full flex-col space-y-2"}>
@@ -46,7 +46,6 @@ export const Input = ({
       </label>
       <input
         type="text"
-        // className="bg-red-50 border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500 block w-full rounded-lg rounded-lg border border p-2.5 p-2.5 text-blue-600 focus:border-blue-400 focus:outline-none"
         className={`${baseClasses} ${errorInputClasses} ${disabledClasses}`}
         placeholder={placeholder}
         value={value}
@@ -54,7 +53,7 @@ export const Input = ({
         disabled={disabled}
       />
       {!isValueValid && (
-        <p className="text-red-600 dark:text-red-500 mt-2 text-sm">
+        <p className="mt-2 text-sm text-red-600 dark:text-red-500">
           <span className="font-poppins text-sm font-medium">Oh, snapp! </span>
           <span className="font-poppins text-sm"> {errorMessage}</span>
         </p>

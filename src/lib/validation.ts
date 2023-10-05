@@ -1,6 +1,6 @@
 type ValidationResult = {
   isValid: boolean;
-  reason: string;
+  reason: string | undefined;
 };
 
 export const validateEthereumAddress = (address: string): ValidationResult => {
@@ -8,13 +8,12 @@ export const validateEthereumAddress = (address: string): ValidationResult => {
     return { isValid: false, reason: "Address should start with '0x'." };
   }
 
-  if (address.length !== 42) {
-    console.log(address.length);
-    return {
-      isValid: false,
-      reason:
-        "Address should be exactly 42 characters long, including the '0x' prefix.",
-    };
+  if (address.length < 42) {
+    return { isValid: false, reason: "Address too short." };
+  }
+
+  if (address.length > 42) {
+    return { isValid: false, reason: "Address too long." };
   }
 
   const regex = /^[a-fA-F0-9]{40}$/;
@@ -25,5 +24,5 @@ export const validateEthereumAddress = (address: string): ValidationResult => {
     };
   }
 
-  return { isValid: true, reason: "Valid address." };
+  return { isValid: true, reason: undefined };
 };
